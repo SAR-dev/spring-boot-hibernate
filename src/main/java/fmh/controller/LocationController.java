@@ -2,11 +2,9 @@ package fmh.controller;
 
 import fmh.models.Account;
 import fmh.models.Location;
-import fmh.models.Post;
 import fmh.services.LocationService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,7 +12,13 @@ import java.util.Optional;
 @RestController
 public class LocationController {
 
+    @Autowired
     private LocationService locationService;
+
+    @PostMapping("/location")
+    public Location addLocation(@RequestBody Location location) {
+        return locationService.addLocation(location);
+    }
 
     @GetMapping("/location/list")
     public List<Location> getAllLocations(){

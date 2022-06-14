@@ -1,11 +1,9 @@
 package fmh.controller;
 
-import fmh.models.Account;
 import fmh.models.Post;
 import fmh.services.PostService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +11,13 @@ import java.util.Optional;
 @RestController
 public class PostController {
 
+    @Autowired
     private PostService postService;
+
+    @PostMapping("/post")
+    public void addPost(@RequestBody Post post) {
+        postService.addPost(post);
+    }
 
     @GetMapping("/post/list")
     public List<Post> getAllPosts(){

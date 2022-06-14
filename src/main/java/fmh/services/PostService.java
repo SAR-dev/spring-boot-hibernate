@@ -23,4 +23,8 @@ public class PostService {
     public List<Post> getPostsByAccountId(Integer id) {
         return postRepository.findByAccountId(id);
     }
+
+    public void addPost(Post post) {
+        postRepository.save(post);
+    }
 }

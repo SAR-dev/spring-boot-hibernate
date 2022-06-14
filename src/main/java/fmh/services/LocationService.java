@@ -1,6 +1,5 @@
 package fmh.services;
 
-import fmh.models.Account;
 import fmh.models.Location;
 import fmh.repositories.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +20,9 @@ public class LocationService {
 
     public Optional<Location> getLocationById(Integer id) {
         return locationRepository.findById(id);
+    }
+
+    public Location addLocation(Location location) {
+        return locationRepository.save(location);
     }
 }
