@@ -19,4 +19,8 @@ public class PostService {
     public Optional<Post> getPostById(Integer id) {
         return postRepository.findById(id);
     }
+
+    public List<Post> getPostsByAccountId(Integer id) {
+        return postRepository.findByAccountId(id);
+    }
 }

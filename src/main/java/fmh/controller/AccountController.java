@@ -1,7 +1,6 @@
 package fmh.controller;
 
 import fmh.models.Account;
-import fmh.models.Location;
 import fmh.models.Post;
 import fmh.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +34,10 @@ public class AccountController {
             return  account.get().getPosts();
         }
         return null;
+    }
+
+    @GetMapping("/account/location/{id}")
+    public List<Account> getAccountsByLocationId(@PathVariable Integer id) {
+        return accountService.getAccountsByLocationId(id);
     }
 }

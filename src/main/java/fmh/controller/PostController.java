@@ -1,5 +1,6 @@
 package fmh.controller;
 
+import fmh.models.Account;
 import fmh.models.Post;
 import fmh.services.PostService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,5 +23,10 @@ public class PostController {
     @GetMapping("/post/{id}")
     public Optional<Post> getPostById(@PathVariable Integer id) {
         return postService.getPostById(id);
+    }
+
+    @GetMapping("/post/account/{id}")
+    public List<Post> getPostsByAccountId(@PathVariable Integer id) {
+        return postService.getPostsByAccountId(id);
     }
 }

@@ -1,7 +1,6 @@
 package fmh.services;
 
 import fmh.models.Account;
-import fmh.models.Post;
 import fmh.repositories.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,4 +22,7 @@ public class AccountService {
         return accountRepository.findById(id);
     }
 
+    public List<Account> getAccountsByLocationId(Integer id) {
+        return accountRepository.findByLocationId(id);
+    }
 }
