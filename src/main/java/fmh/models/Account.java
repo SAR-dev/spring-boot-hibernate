@@ -62,6 +62,14 @@ public class Account {
         this.posts = posts;
     }
 
+    public Integer getLocationid() {
+        return locationid;
+    }
+
+    public void setLocationid(Integer locationid) {
+        this.locationid = locationid;
+    }
+
     public Account(Integer id, String first_name, String last_name, String email, Location location, List<Post> posts) {
         this.id = id;
         this.first_name = first_name;
@@ -72,14 +80,16 @@ public class Account {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String first_name;
     private String last_name;
     private String email;
 
     @ManyToOne
-    @JoinColumn(name="location_id")
+    @JoinColumn(name="locationid", insertable = false, updatable = false)
     private Location location;
+    private Integer locationid;
 
     @OneToMany(mappedBy = "account")
     private List<Post> posts;

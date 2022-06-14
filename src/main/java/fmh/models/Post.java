@@ -2,10 +2,7 @@ package fmh.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -63,9 +60,13 @@ public class Post {
         this.account = account;
     }
 
-    @Id
-    private Integer id;
-    private LocalDate created_at;
+    public Integer getAccountid() {
+        return accountid;
+    }
+
+    public void setAccountid(Integer accountid) {
+        this.accountid = accountid;
+    }
 
     public Post(Integer id, LocalDate created_at, Account author, String title, String desc, Account account) {
         this.id = id;
@@ -76,6 +77,10 @@ public class Post {
         this.account = account;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    private LocalDate created_at;
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Account author;
@@ -83,6 +88,7 @@ public class Post {
     private String desc;
 
     @ManyToOne
-    @JoinColumn(name = "account_id")
+    @JoinColumn(name = "accountid", insertable = false, updatable = false)
     private Account account;
+    private Integer accountid;
 }

@@ -25,4 +25,8 @@ public class AccountService {
     public List<Account> getAccountsByLocationId(Integer id) {
         return accountRepository.findByLocationId(id);
     }
+
+    public Account addAccount(Account account) {
+        return accountRepository.save(account);
+    }
 }

@@ -1,12 +1,11 @@
 package fmh.controller;
 
 import fmh.models.Account;
+import fmh.models.Location;
 import fmh.models.Post;
 import fmh.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +15,11 @@ public class AccountController {
 
     @Autowired
     private AccountService accountService;
+
+    @PostMapping("/account")
+    public Account addAccount(@RequestBody Account account) {
+        return accountService.addAccount(account);
+    }
 
     @GetMapping("/account/list")
     public List<Account> getAllAccounts() {
